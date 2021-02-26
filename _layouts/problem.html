@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<article>
+
+  <h1> {{ page.title }} </h1>
+  <table style="border: 2px solid;">
+    <thead></head>
+    <tbody>
+    <tr>
+     <td>maintainer:
+     <a href="https://github.com/{{page.maintainer}}"> {{page.maintainer}}</a> </td>
+     <td>status: {{page.status}}</td>
+     <td>categories: {{page.tags | join: ", " }} </td>
+    </tr>
+    </tbody>
+  </table>
+
+  {{content}}
+
+</article>
