@@ -5,11 +5,23 @@
 layout: default
 ---
 
+# About
+
+*Bitcoin Research Problems* lists open research problems that, if solved, would have a big impact on the evolution of Bitcoin.
+Its purpose to help align the efforts of researchers and the needs of Bitcoin protocol developers.
+
+
+----
+# Open Problems
+
 {% for prob in site.problems %}
 <h2>
-<a href="{{ prob.url }}"> {{prob.title}} </a>  ({{ prob.tags | join: ", " }})
+<a href="{{ prob.url }}"> {{prob.title}} </a>  <small>({{ prob.tags | join: ", " }})</small>
 </h2>
 <b>status: </b> {{ prob.status }}
 {{ prob.excerpt }}
 
 {% endfor %}
+
+
+[Lightning Network]: https://en.wikipedia.org/wiki/Lightning_Network

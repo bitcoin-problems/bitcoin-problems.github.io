@@ -7,6 +7,7 @@
 
 {% seo %}
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/custom.css?v=' | append: site.github.build_revision | relative_url }}">
     <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
     <!--[if lt IE 9]>
@@ -22,25 +23,24 @@
         <p>{{ site.description | default: site.github.project_tagline }}</p>
       </header>
 
+        {% if page.layout == "problem" %}
       <div id="banner">
         <span id="logo"></span>
-<!-- {{ problems }} -->
-        <a href="https://github.com/bitcoin-research/bitcoin-research.github.io/edit/master/{{page.path}}" class="button fork"><strong>Edit On GitHub</strong></a>
-        <!-- {% if site.show_downloads %} -->
-        <!--   <div class="downloads"> -->
-        <!--     <span>Downloads:</span> -->
-        <!--     <ul> -->
-        <!--       <li><a href="{{ site.github.zip_url }}" class="button">ZIP</a></li> -->
-        <!--       <li><a href="{{ site.github.tar_url }}" class="button">TAR</a></li> -->
-        <!--     </ul> -->
-        <!--   </div> -->
-        <!-- {% endif %} -->
+        <div class="downloads">
+            <ul>
+              <li><a href="https://github.com/bitcoin-research/bitcoin-research.github.io/edit/master/{{page.path}}" class="button"><strong>Edit On GitHub</strong></a></li>
+            </ul>
+          </div>
       </div><!-- end banner -->
+      {% endif %}
 
     <div class="wrapper">
+
+      {% if page.layout == "problem" %}
       <nav>
         <ul></ul>
       </nav>
+      {% endif %}
       <section>
         {{ content }}
 
