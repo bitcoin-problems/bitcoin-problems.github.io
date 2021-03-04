@@ -36,7 +36,7 @@ Then each encrypted payload for each node could contain a proof that it contains
 
 *There are no proposed solutions for this problem*
 
-## Conjecture
+## Commentary
 
 
 > <a href="https://twitter.com/LLFourn"> @LLFourn</a> We are yet to see channel jamming attacks in the wild on lightning.
