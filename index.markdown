@@ -9,6 +9,7 @@ layout: default
 
 *Bitcoin Problems* is a community managed list of open research problems that, if solved, would have positive impact on the evolution of Bitcoin.
 Its purpose to help align the efforts of researchers and the needs of Bitcoin protocol developers.
+To contribute to the effort open an issue or pull request at the [respository](https://github.com/bitcoin-problems/bitcoin-problems.github.io).
 
 ----
 # Open Problems
