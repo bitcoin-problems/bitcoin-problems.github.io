@@ -20,8 +20,8 @@ This effectively provides the same privacy enhancement as a *[chaumian coinjoin]
 1. The transactions involved may be indistinguishable from normal transactions (the inputs and at least not grouped together in a single transaction).
 2. Tumblers can be used on *layer-2* networks like [Lightning] to help make payments more unlinkable. Additionally, They can even be used between on-chain and off-chain funds or even payments between chains (i.e. *atomic swaps*).
 
-The practical problem with the Tumbler protocols they are either complicated and use exotic cryptographic primitives or their security is in question.
-This problem is considered solved by protocol that uses the Bitcoin crypto stack (secp256k1, SHA256 etc) and has a security proof. 
+The practical problem with Tumbler protocols is that they are either complicated and use exotic cryptographic primitives or their security is in question.
+This problem is considered solved by the publication of a protocol that uses the Bitcoin crypto stack (secp256k1, SHA256 etc) and has a security proof.
 
 ## Impact
 
