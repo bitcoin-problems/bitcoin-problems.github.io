@@ -1,6 +1,6 @@
 # Bitcoin Problems
 
-[bitcoin-problems.github.io](https://bitcoin-research.github.io)
+[bitcoin-problems.github.io](https://bitcoin-problems.github.io)
 is a community managed list of open research problems that, if solved, would have positive impact on the evolution of Bitcoin.
 
 Please contribute to its development by making a issue or pull request.
