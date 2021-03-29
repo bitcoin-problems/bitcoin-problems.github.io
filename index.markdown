@@ -15,12 +15,12 @@ To contribute to the effort open an issue or pull request at the [respository](h
 # Open Problems
 
 {% for prob in site.problems %}
+{% unless prob.status == "wip" %}
 <h2>
 <a href="{{ prob.url }}"> {{prob.title}} </a>  <small>({{ prob.tags | join: ", " }})</small>
 </h2>
-<b>status: </b> {{ prob.status }}
 {{ prob.excerpt }}
-
+{% endunless %}
 {% endfor %}
 
 

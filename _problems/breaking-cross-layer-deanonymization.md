@@ -1,21 +1,20 @@
 ---
 layout: problem
-title:  "PTLC Cycle Jamming"
-tags: lightning DOS
+title:  "Breaking cross-layer deanonimization"
+tags: lightning privacy
 status: "wip"
 maintainer: LLFourn
 issue: 3
 ---
 
-*Describe the problem here*
+*This problem has not been described yet*
 
 ## Impact
 
 <!-- - Try not to repeat the description too much -->
 <!-- - Make it clear what the impact on the big picture of Bitcoin's evolution would be -->
 
-*Solving this problem would have no apparent impact other than the expenditure of your time*
-
+*The impact of this problem has not be described yet*
 
 ## Potential Directions
 
