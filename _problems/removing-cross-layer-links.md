@@ -8,7 +8,7 @@ issue: 3
 ---
 
 When two lightning nodes wish to inform their peers about changes in the capacity between them they broadcast a [`channel_announcement`] or [`channel_update`] gossip message.
-These update messages both point on-chain UTXO through their `short_channel_id` field along with the nodes involved (and signatures from all keys).
+These messages both point to an on-chain UTXO through their `short_channel_id` field along with the nodes involved (and signatures from all keys).
 This create a *cross-layer link* between the nodes in the layer-2 network and the outputs on the layer-1 blockchain.
 These cross-layer links are a privacy leak.
 
