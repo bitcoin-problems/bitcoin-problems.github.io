@@ -11,15 +11,15 @@ In *Point Time Locked Contract* ([PTLC]) based [Lightning] channels the lock is 
 Unfortunately, this seems to make PTLCs a little bit too unlinkable -- it allows a malicious sender to create a single payment that cycles multiple times through a target pair of honest nodes significantly reducing the capacity between them for a small cost to the attacker.
 As in an ordinary jamming attack the malicious receiver then refuses to unlock the payment leaving the funds locked along the path until timeout.
 The honest nodes cannot detect the attack for the same reason that it preserves privacy: each incoming PTLC cannot be linked to any previous one.
-This attack is easily preventable with [HTLC] based payments where the lock is the same SHA256 image at each hop.
 
 {% figure caption:"Two attacker 😈 controlled nodes drain capacity from **A** to **B** by having cycles in the payment path. The PTLC randomization at each honest node makes each incoming PTLC unlinkable from the last from the perspective of the honest nodes. The attacker quadruples the effectiveness of an ordinary jamming attack against a single hop" %}
 ![cycle attack](/assets/cycle-attack.svg)
 {% endfigure %}
 
 Typical jamming attacks allow an attacker to lock up capacity along a path but any individual node will only have an amount locked roughly equal to that of the attacker.
-This attack allows the attacker to magnify the attack a particular hop (as shown in the figure above).
+This enhanced attack allows the attacker to magnify the attack a particular hop (as shown in the figure above).
 Note that it is not possible to just cycle back between **A** and **B** because that is easy to spot; each cycle needs at least three honest nodes in it.
+This attack is easily preventable with [HTLC] based payments where the lock is the same SHA256 image at each hop.
 
 ## Impact
 
