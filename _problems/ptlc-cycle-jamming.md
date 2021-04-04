@@ -12,9 +12,11 @@ Unfortunately, this seems to make PTLCs a little bit too unlinkable -- it allows
 As in an ordinary jamming attack the malicious receiver then refuses to unlock the payment leaving the funds locked along the path until timeout.
 The honest nodes cannot detect the attack for the same reason that it preserves privacy: each incoming PTLC cannot be linked to any previous one.
 
-{% figure caption:"Two attacker 😈 controlled nodes drain capacity from **A** to **B** by having cycles in the payment path. The PTLC randomization at each honest node makes each incoming PTLC unlinkable from the last from the perspective of the honest nodes. The attacker quadruples the effectiveness of an ordinary jamming attack against a single hop" %}
-![cycle attack](/assets/cycle-attack.svg)
-{% endfigure %}
+
+{% include figure.html image="cycle-attack.svg" name="PTLC cycle jamming attack" caption="
+Two attacker 😈 controlled nodes drain capacity from **A** to **B** by having cycles in the payment path. The PTLC randomization at each honest node makes each incoming PTLC unlinkable from the last from the perspective of the honest nodes. The attacker quadruples the effectiveness of an ordinary jamming attack against a single hop.
+"
+%}
 
 Typical jamming attacks allow an attacker to lock up capacity along a path but any individual node will only have an amount locked roughly equal to that of the attacker.
 This enhanced attack allows the attacker to magnify the attack a particular hop (as shown in the figure above).
