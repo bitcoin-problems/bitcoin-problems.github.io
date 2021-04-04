@@ -29,6 +29,7 @@ url: "https://bitcoin-problems.github.io" # the base hostname & protocol for you
 theme: jekyll-theme-leap-day
 plugins:
   - jekyll-feed
+  - jekyll-figure
 
 collections:
   problems:
