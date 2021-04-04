@@ -47,7 +47,3 @@ issue: 4
 
 *There is currently no related problems*
 
-
-## Footnotes
-
-*There are no footnotes for this article*

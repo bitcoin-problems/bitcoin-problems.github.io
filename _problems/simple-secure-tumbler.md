@@ -54,11 +54,6 @@ A secure Tumbler protocol that only uses the Bitcoin crypto stack would signific
 
 *There is currently no related problems*
 
-## Footnotes
-
-*There are no footnotes for this article*
-
-
 [Lightning]: https://en.wikipedia.org/wiki/Lightning_Network
 [coin swaps]: https://gist.github.com/chris-belcher/9144bd57a91c194e332fb5ca371d0964
 [submarine swaps]: https://wiki.ion.radar.tech/tech/research/submarine-swap

@@ -7,7 +7,7 @@ maintainer: LLFourn
 issue: 1
 ---
 
-In *Point Time Locked Contract* ([PTLC]) based [Lightning] channels the lock is randomized at each hop so that two malicious nodes separated by at least one honest node along the payment path cannot use the lock to associate two incoming PTLCs with each other[^1].
+In *Point Time Locked Contract* ([PTLC]) based [Lightning] channels the lock is randomized at each hop so that two malicious nodes separated by at least one honest node along the payment path cannot use the lock to associate two incoming PTLCs with each other.
 Unfortunately, this seems to make PTLCs a little bit too unlinkable -- it allows a malicious sender to create a single payment that cycles multiple times through a target pair of honest nodes significantly reducing the capacity between them for a small cost to the attacker.
 As in an ordinary jamming attack the malicious receiver then refuses to unlock the payment leaving the funds locked along the path until timeout.
 The honest nodes cannot detect the attack for the same reason that it preserves privacy: each incoming PTLC cannot be linked to any previous one.
@@ -54,11 +54,6 @@ Then each encrypted payload for each node could contain a proof that it contains
 ## Related Problems
 
 *There are currently no open problems related to this one*
-
-## Footnotes
-
-
-[^1]: This does not mean that the malicious node cannot link the payments using heuristics like amount or time-lock but that is separate issue.
 
 [PTLC]: https://bitcoinops.org/en/topics/ptlc/
 [HTLC]: https://bitcoinops.org/en/topics/htlc/

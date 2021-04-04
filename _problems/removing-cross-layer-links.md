@@ -62,11 +62,6 @@ For example if a small lightning payment had to be made to process channel updat
 
 *There is currently no related problems*
 
-
-## Footnotes
-
-*There are no footnotes for this article*
-
 [*Cross-Layer Deanonymization Methods in the Lightning Protocol*]: https://arxiv.org/pdf/2007.00764.pdf
 [*An Empirical Analysis of Privacy in the Lightning Network*]: https://arxiv.org/pdf/2003.12470.pdf
 [`channel_announcement`]: https://github.com/lightningnetwork/lightning-rfc/blob/master/07-routing-gossip.md#the-channel_announcement-message
