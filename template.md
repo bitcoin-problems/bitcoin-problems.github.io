@@ -1,10 +1,10 @@
 ---
 layout: problem
-title:  "PTLC Cycle Jamming"
-tags: lightning DOS
+title:  "YOUR TITLE HERE"
+tags: list of tags
 status: "wip"
 maintainer: LLFourn
-issue: 3
+issue: 0
 ---
 
 *Describe the problem here*
