@@ -18,7 +18,7 @@ Note carefully that routing payments only requires some estimate of the capacity
 The `short_channel_id` is a resource constraint on the attacker since creating valid outputs requires confirming layer-1 transactions.
 Without it a attacker can consume computational and network resources of honest nodes by spamming `channel_announcement` messages (which honest nodes are obliged to rebroadcast).
 
-In 2021, Romiti et al. published [*Cross-Layer Deanonymization Methods in the Lightning Protocol*] where they use this cross-layer link to develop heuristics to:
+In 2021, Romiti et al. published *[Cross-Layer Deanonymization Methods in the Lightning Protocol]* where they use this cross-layer link to develop heuristics to:
 
 - Determine which node funded a lightning channel and therefore which node owns the change output.
 - Assign cooperative channel close outputs to the parties involved.
@@ -31,7 +31,7 @@ Knowledge about the lightning node, like IP address and payment patterns etc can
 
 Lightning is often presented as a privacy enhancing technology.
 Unfortunately, cross-layer links make several common lightning usage patterns actually harmful to user privacy.
-Removing these links would allow the lightning network to be more confidently recommended as a way of improving user privacy.
+Without these links users could interact with the lightning network without taking precautions to avoid associating their on-chain funds with their lightning node.
 Another potential benefit of removing these links is that lightning channels would not be as bound to the Bitcoin blockchain and may even exist on [sidechains].
 
 ## Potential Directions
@@ -48,7 +48,7 @@ For example if a small lightning payment had to be made to process channel updat
 ## Related Research
 
 1. Romiti et al. inspired this problem with *[Cross-Layer Deanonymization Methods in the Lightning Protocol]*.
-2. Kappos et al. apply similar ideas against *private channels* in [*An Empirical Analysis of Privacy in the Lightning Network*]. This shows how private channels are less private if the funding coins can be associated with public channel coins.
+2. Kappos et al. apply similar ideas against *private channels* in *[An Empirical Analysis of Privacy in the Lightning Network]*. This shows how private channels are less private if the funding coins can be associated with public channel coins.
 
 ## Commentary
 
@@ -62,8 +62,8 @@ For example if a small lightning payment had to be made to process channel updat
 
 *There is currently no related problems*
 
-[*Cross-Layer Deanonymization Methods in the Lightning Protocol*]: https://arxiv.org/pdf/2007.00764.pdf
-[*An Empirical Analysis of Privacy in the Lightning Network*]: https://arxiv.org/pdf/2003.12470.pdf
+*[Cross-Layer Deanonymization Methods in the Lightning Protocol]*: https://arxiv.org/pdf/2007.00764.pdf
+*[An Empirical Analysis of Privacy in the Lightning Network]*: https://arxiv.org/pdf/2003.12470.pdf
 [`channel_announcement`]: https://github.com/lightningnetwork/lightning-rfc/blob/master/07-routing-gossip.md#the-channel_announcement-message
 [`channel_update`]: https://github.com/lightningnetwork/lightning-rfc/blob/master/07-routing-gossip.md#the-channel_update-message
 [sidechains]: https://bitcoinops.org/en/topics/sidechains/
