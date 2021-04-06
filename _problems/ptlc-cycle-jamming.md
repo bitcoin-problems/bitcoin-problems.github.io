@@ -32,7 +32,7 @@ Solving this problem would allow randomized PTLCs to be included in lightning wi
 ### Prove payment path is cycle-free
 
 An obvious direction is to somehow prove that the payment path does not have any cycles in it (without revealing anything else about it).
-The payer could create a cryptographic a randomizable commitment to all the nodes in the path which is passed on by each node to the next (after randomizing it).
+The payer could create a cryptographic randomizable commitment to all the nodes in the path which is passed on by each node to the next (after randomizing it).
 Then each encrypted payload for each node could contain a proof that it contains no cycles.
 
 ## Proposed Solutions
