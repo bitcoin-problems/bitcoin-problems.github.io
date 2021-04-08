@@ -39,9 +39,9 @@ Note in the [original work][Discreet Log Contracts], a strong notion of oracle a
 So far the following attacks have been demonstrated or conjectured to exist against the original work:
 
 - **User-on-User rogue key attack**: A user can pick their public key to cancel out the oracle's attestation so that it doesn't need the oracle's attestation to claim the funds.[^1]
-- **Oracle-on-Oracle rogue key attack**: An oracle can choose their announcement nonce for an event to cancel out an attestation point of another oracle such that if the two are events are combined then the malicious oracle will be able to produce the combined attestation by itself.[^1]
-- **Oracle signature forgery**: A malicious party who has control over what the oracle attests to may get them to attest to a combination of outcomes such that they can forge a Schnorr signature by combining the attestations. They do this by solving a k-sum problem such that the sum of the Schnorr hashes equals their target value (note they can compute the Schnorr hashes ahead of time because the oracle includes the nonce in the announcement).[^2]
-- **Fraud proof forgery by collision**: A malicious user may be find two sets of different attestation points for the same set of announcements that add up to the same thing. Therefore, if the oracle honestly attests to one combination they will have implicitly attested to the other. The user may then present the attestation for the malicious combination as proof of fraud. Once again, this employs solving the k-sum problem[^2].
+- **Oracle-on-Oracle rogue key attack**: An oracle can choose their announcement nonce for an event to cancel out an attestation point of another oracle such that if the two are events are combined then the malicious oracle will be able to produce the combined attestation by itself.[^2]
+- **Oracle signature forgery**: A malicious party who has control over what the oracle attests to may get them to attest to a combination of outcomes such that they can forge a Schnorr signature by combining the attestations. They do this by solving a k-sum problem[^4] such that the sum of the Schnorr hashes equals their target value (note they can compute the Schnorr hashes ahead of time because the oracle includes the nonce in the announcement)[^3].
+- **Fraud proof forgery by collision**: A malicious user may be find two sets of different attestation points for the same set of announcements that add up to the same point. Therefore, if the oracle honestly attests to one combination they will have implicitly attested to the other. The user may then present the attestation for the malicious combination as proof of fraud. Once again, this employs an algorithm for solving the k-sum problem[^3].
 
 ## Impact
 
@@ -73,12 +73,15 @@ A scheme with security proofs would allow users and engineers to be confident in
 
 ## Footnotes
 
-[^1]: See [Related Research](#related-research) for the origin of these attacks.
-[^2]: Neither of these two attacks are published anywhere at the moment.
+[^1]: First [pointed out on irc](https://freenode.irclog.whitequark.org/bitcoin-wizards/2017-06-06) soon after the original work was published. Also discussed in *[How To Make a Prediction Market on Twitter with Bitcoin]*.
+[^2]: This attack is discussed in *[Security of Discreet Log Contract Attestation Schemes]*.
+[^3]: This attack is yet to be published.
+[^4]: k-sum known as the "generalized birthday problem". Minder and Sinclair give applicable algorithms for solving it in *[The extended k-tree algorithm]*.
 
 [DLC specification]: https://github.com/discreetlogcontracts/dlcspecs
 [Discreet Log Contracts]: https://adiabat.github.io/dlc.pdf
 [How to Make a Prediction Market on Twitter with Bitcoin]: https://github.com/LLFourn/two-round-dlc/blob/master/main.pdf
 [Security of Discreet Log Contract Attestation Schemes]: https://github.com/LLFourn/dlc-sec/blob/master/main.pdf
 [adaptor signatures]: https://bitcoinops.org/en/topics/adaptor-signatures/
+[The extended k-tree algorithm]: https://eprint.iacr.org/2016/312.pdf
 
