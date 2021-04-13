@@ -62,6 +62,7 @@ A scheme with security proofs would allow users and engineers to be confident in
 1. Dryja introduces the idea in *[Discreet Log Contracts]*.
 2. Fournier demonstrates the User-on-User rogue key attack in *[How to Make a Prediction Market on Twitter with Bitcoin]*.
 3. Fournier introduces a basic notions of security in *[Security of Discreet Log Contract Attestation Schemes]* and demonstrates the Oracle-on-Oracle rogue key attack.
+4. Chalkias et al. demonstrate how to securely combine the `s` values from many Schnorr signatures into a single one in *[Non-interactive half-aggregation of EdDSA and variants of Schnorr signatures]*. The original DLC paper suggests to naively add `s` values together which leads to the collision problem -- this paper shows a secure way to do it.
 
 ## Commentary
 
@@ -84,4 +85,4 @@ A scheme with security proofs would allow users and engineers to be confident in
 [Security of Discreet Log Contract Attestation Schemes]: https://github.com/LLFourn/dlc-sec/blob/master/main.pdf
 [adaptor signatures]: https://bitcoinops.org/en/topics/adaptor-signatures/
 [The extended k-tree algorithm]: https://eprint.iacr.org/2016/312.pdf
-
+[Non-interactive half-aggregation of EdDSA and variants of Schnorr signatures]: https://eprint.iacr.org/2021/350.pdf
