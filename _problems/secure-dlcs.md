@@ -4,6 +4,7 @@ title:  "Secure DLCs"
 tags: DLC
 status: open
 maintainer: LLFourn
+issue: 8
 ---
 
 In *[Discreet Log Contracts]* (DLC), Dryja presents a compelling design for Bitcoin based smart contracts that settle based on real world events.
