@@ -27,12 +27,12 @@ The combination of attestation points is one of the more challenging aspects of 
 
 ### Security Notions
 
-To be secure a DLC protocol must satisfy the following informal properties:
+To be secure a DLC protocol must at least satisfy these two properties:
 
 1. Bet security: If the oracle or oracles are honest then the coins are distributed at the end of the protocol according to the agreement made between the two users.
 2. Oracle accountability: Any user wronged by a malicious oracle must be able to hold them accountable. It must be impossible to hold an honest oracle to account for something they didn't do.
 
-Note in the [original work][Discreet Log Contracts], a strong notion of oracle accountability is put forward such that a user obtains attestations for two contradictory outcomes is able to extract the oracle's static public key from it.
+Note in the [original work][Discreet Log Contracts], a strong notion of oracle accountability is acheived such that a user who obtains attestations for two contradictory outcomes is able to extract the oracle's static public key from it.
 
 ### Attacks on DLCs
 
