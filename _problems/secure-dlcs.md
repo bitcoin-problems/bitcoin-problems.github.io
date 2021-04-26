@@ -46,8 +46,8 @@ So far the following attacks have been demonstrated or conjectured to exist agai
 
 ## Impact
 
-The existing [DLC specification] effort has been impeded by having to consider security matters while
-A scheme with security proofs would allow users and engineers to be confident in the construction of predication markets and financial contracts on Bitcoin.
+The existing [DLC specification] effort has been impeded by having to consider security matters while trying to make design choices.
+A scheme with security proofs would mean the specs could be written against a fixed target and users could be confident in its security.
 
 ## Potential Directions
 
