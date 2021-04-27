@@ -27,12 +27,21 @@ Being able to associate a lightning node with on-chain outputs hurts both the pr
 Knowledge about the on-chain entity can be attached to a particular lightning node.
 Knowledge about the lightning node, like IP address and payment patterns etc can be attached to the on-chain entity.
 
+Far more cross-layer links can be exploited beyond association between `short_channel_id` and on-chain UTXO.
+In 2020, Riard et al. published *[Time-Dilation Attacks on the Lightning Protocol]* where they suggest several transaction-relay/block-relay based cross-layer links (section 3) to:
+
+- Determine if a bitcoin node is associated to a lightning node and if yes which one.
+- Or vice versa to which bitcoin node a lightning node is relying on.
+
+It's also firmly believed among lightning developers that observing or manipulating a bitcoin node mempool content and offchain announced feerate can be leveraged as a cross-layer link.
+
 ## Impact
 
 Lightning is often presented as a privacy enhancing technology.
 Unfortunately, cross-layer links make several common lightning usage patterns actually harmful to user privacy.
 Without these links users could interact with the lightning network without taking precautions to avoid associating their on-chain funds with their lightning node.
 Another potential benefit of removing these links is that lightning channels would not be as bound to the Bitcoin blockchain and may even exist on [sidechains].
+Cross-layer links are also building blocks to launch advanced attacks damaging users's coins safety for e.g pinning attacks.
 
 ## Potential Directions
 
@@ -40,6 +49,11 @@ Another potential benefit of removing these links is that lightning channels wou
 
 Instead of using layer-1 transactions to prevent spam, perhaps existing layer-2 funds could be used to prevent spam.
 For example if a small lightning payment had to be made to process channel update messages then this may pay for the resources used by peers on the network.
+
+### Use one-shot over Tor transaction (re)broadcast
+
+Instead of using the bitcoin node servicing the blockchain view, a Lightning node might use one-shot peer connection over Tor to break the linkage between IP address and transaction.
+This technique should be particularly beneficial to Lightning hub with high-frequency rebroadcast policies.
 
 ## Proposed Solutions
 
@@ -49,6 +63,7 @@ For example if a small lightning payment had to be made to process channel updat
 
 1. Romiti et al. inspired this problem with *[Cross-Layer Deanonymization Methods in the Lightning Protocol]*.
 2. Kappos et al. apply similar ideas against *private channels* in *[An Empirical Analysis of Privacy in the Lightning Network]*. This shows how private channels are less private if the funding coins can be associated with public channel coins.
+3. Riard et al. concurrently dubbed this problem inter-layer mapping techniques in *[Time-Dilation Attacks on the Lightning Protocol]*
 
 ## Commentary
 
@@ -64,6 +79,7 @@ For example if a small lightning payment had to be made to process channel updat
 
 [Cross-Layer Deanonymization Methods in the Lightning Protocol]: https://arxiv.org/pdf/2007.00764.pdf
 [An Empirical Analysis of Privacy in the Lightning Network]: https://arxiv.org/pdf/2003.12470.pdf
+[Time-Dilation Attacks on the Lightning Protocol]: https://arxiv.org/pdf/2006.01418.pdf
 [`channel_announcement`]: https://github.com/lightningnetwork/lightning-rfc/blob/master/07-routing-gossip.md#the-channel_announcement-message
 [`channel_update`]: https://github.com/lightningnetwork/lightning-rfc/blob/master/07-routing-gossip.md#the-channel_update-message
 [sidechains]: https://bitcoinops.org/en/topics/sidechains/
