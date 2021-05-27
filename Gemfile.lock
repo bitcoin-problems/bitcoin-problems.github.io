@@ -119,7 +119,6 @@ GEM
       jekyll (~> 3.0)
     jekyll-feed (0.15.1)
       jekyll (>= 3.7, < 5.0)
-    jekyll-figure (0.1.0)
     jekyll-gist (1.5.0)
       octokit (~> 4.2)
     jekyll-github-metadata (2.13.0)
@@ -261,7 +260,6 @@ DEPENDENCIES
   github-pages
   jekyll (~> 3.9.0)
   jekyll-feed (~> 0.12)
-  jekyll-figure
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.1)
