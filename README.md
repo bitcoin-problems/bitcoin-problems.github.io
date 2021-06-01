@@ -13,4 +13,4 @@ The format is just a guideline so feel free to deviate from it as you feel is wa
 
 ## Licence
 
-All content in this repository is and all contributions are made under the [CCO 1.0](https://creativecommons.org/publicdomain/zero/1.0/) licence.
+All content in this repository is, and all contributions are made, under the [CCO 1.0](https://creativecommons.org/publicdomain/zero/1.0/) licence.
