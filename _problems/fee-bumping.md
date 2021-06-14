@@ -1,16 +1,18 @@
 ---
 layout: problem
-title:  "Replacement rules and Fee Bumping"
+title:  "Secure Fee-Bumping for L2s"
 tags: lightning
 status: open
-maintainer: LLFourn
+maintainer: ariard
+issue: 16
 ---
 
 Layer-2 protocols like [Lightning] treat the blockchain as a dispute resolution and settlement layer.
 Only when their counterparty is unreachable or uncooperative does a participant have to unilaterally broadcast a transaction.
-The protocol often requires a party to confirm a transaction within a certain time so the funds are distributed fairly.
-So how can layer-2 protocol designers guarantee an opportunity to confirm a time sensitive transaction to an honest party under reasonable assumptions?
-Since miners prioritize transactions based on their feerate, the only effective way is to make sure participants can set the fee of the transactions and ideally even increase it repeatedly after the transaction has been broadcast to the network shoud be it insufficient.
+Protocols like [Lightning] require a participant to confirm a transaction within a certain time so the coins are distributed correctly.
+So how can layer-2 protocol designers guarantee an opportunity to confirm time sensitive transactions to participants under reasonable assumptions?
+Since miners prioritize transactions based on their feerate, the only effective way is to make sure participants can control the fee of these transactions unilaterally.
+Ideally they should even be able to increase it after the transaction has been broadcast to the network should the original fee be insufficient.
 
 There are two approaches available for fee bumping in Bitcoin today:
 
@@ -23,30 +25,33 @@ Let's look at the implications of the current methods have on layer-2 protocols.
 ### Pre-signed Transactions
 
 Often the transaction an honest party is racing against the clock to confirm is a *pre-signed* transaction.
-It was signed when their counterparty was cooperative -- now the honest party needs to go on chain precisely because they are not cooperative.
+It was signed when their counterparty was cooperative -- now they need to go on chain precisely because they are not cooperative.
 If fees become persistently higher than the pre-signed transaction's fees the party may miss their deadline.
 The obvious but suboptimal solution is to monitor fees closely and update any time-sensitive pre-signed transactions with the counterparty while they are online (this method is available via the [`update_fee`] message in lightning today).
 
 It is much more desirable to allow the party to spontaneously increase the fee at will.
 This can be done with [CPFP].
-For example, in the [Lightning] protocol commitment transactions are designed with [anchor outputs] so they can be easily fee bumped through CPFP.
+For example, in the [Lightning] protocol commitment transactions have [anchor outputs] so they can be easily fee bumped through CPFP.
+Although this works it is rather complex to design and implement.
+Furthermore, users have to keep unattached fee-bumping UTXOs around in their wallet in case their need to do a fee-bump via CPFP.
 
 ### Resource Usage of Replacement
 
-Allowing a mempool transaction to be replaced by higher fee paying transactionrmay open up Bitcoin network nodes to *denial of service* (DoS) attacks.
+Allowing a mempool transaction to be replaced by higher fee paying transaction may open up Bitcoin network nodes to *denial of service* (DoS) attacks.
 Without replacement, a malicious party's ability to get your node to process a transaction is limited by the number of UTXOs they own.
-With replacement an attacker can repeatedly spam your node with transactions that replace previous ones even if they only own a single UTXO.
+With replacement an attacker can repeatedly spam your node with transactions that replace previous ones even if they only own a single UTXO forcing you to spend time verifying them.
 
 To prevent effective denial of service attacks, replacement transactions have to follow some rather strict rules as defined in [BIP125].
-In particular a replacement transaction must pay a higher absolute fee and a higher feerate than the transactions they are evicting and it must not evict more than 100 transactions.
+In particular a replacement transaction must pay a higher absolute fee (rule 3) and a higher feerate (rule 4) than the transaction it is evicting.
+In addition, it must not evict more than 100 transactions (rule 5).
 
 For layer-2 protocols these rules had the unintended consequence of creating "pinning" attacks (see [Related Research](#related-research)).
 For example, a malicious party could add 100 descendants to a transaction that conflicts with the one the honest party needs confirm.
-Even if the honest party pays a large fee it still won't evict the malicious party's transaction since that would evict more than 100 transactions.
-The other [BIP125] rules may be abused as well.
+Even if the honest party pays a large fee it still won't evict the malicious party's transaction since that would evict more than 100 transactions which breaks rule 5.
+Rule 3 may be abused as well by creating a very low feerate (so miners won't include it) but high absolute fee (so it won't be evicted) transaction that conflicts with the honest party's transaction.
 
-The Bitcoin core developers instincitvely introduced an exception to [BIP125]'s rules called the *[CPFP carve out]* to allow lightning designers to mitigate pinning attacks to some extent.
-Unfortunately, using CPFP required a siginficant lightning protocol redesgin and will not be an effective solution until the Bitcoin network supports [package relay].
+The Bitcoin core developers instinctively introduced an exception to BIP125's 5th rule called the *[CPFP carve out]* to allow lightning designers to mitigate pinning attacks to some extent.
+Unfortunately, even with the carve out rule it will not be an effective solution until the Bitcoin network supports [package relay].
 
 ## Impact
 
@@ -57,8 +62,6 @@ Having a simple set of principles would increase the confidence in the resulting
 ## Potential Directions
 
 1. **Reconsidering mempool and relay rules**: It is possible that mempool rules could be made less problematic for layer-2 protocol designers without harming the Bitcoin system.
-   The main concern with this approach is that the rules that are optimal for layer-2 protocols may not be the rules that are optimal for miner profit or preventing DoS attacks.
-   However, if tweaked relay rules were to allow layer-2 Bitcoin protocols to thrive then the increased value of the Bitcoin network could more than compensate miners for using a slightly suboptimal algorithm (as long as they don't introduce DoS attacks).
 2. **Consensus changes**: It may be possible introduce new ways of increasing an already broadcasted transaction's fee through a consensus change (see [Proposed Solutions](#proposed-solutions)).
 
 ## Proposed Solutions
@@ -74,6 +77,7 @@ The advantage of this idea is that it is always available to any transaction wit
 2. In *[RBF Pinning with Counterparties and Competing Interest]* Corallo describes a novel pinning attack against Lightning.
 3. In *[Pinning : The Good, The Bad, The Ugly]* Riard further describes the problem of pinning attacks and gives several examples relevant to Lightning.
 4. The *[Mempool and mining]* article on the Bitcoin core development wiki Daftuar provides the rationale for why the mempool rules are the way they are.
+5. In *[A Stroll through Fee-Bumping Techniques : Input-Based vs Child-Pay-For-Parent]* Riard evaluates evaluates CPFP vs "Input based" fee bumping techniques (mutating the transaction to have additional inputs).
 
 ## Related Problems
 
@@ -96,3 +100,4 @@ The advantage of this idea is that it is always available to any transaction wit
 [CPFP]: https://bitcoinops.org/en/topics/cpfp/
 [anchor outputs]: https://bitcoinops.org/en/topics/anchor-outputs/
 [package relay]: https://bitcoinops.org/en/topics/package-relay/
+[A Stroll through Fee-Bumping Techniques : Input-Based vs Child-Pay-For-Parent]: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-May/019031.html
