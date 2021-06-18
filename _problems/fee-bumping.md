@@ -25,7 +25,7 @@ Let's look at the implications of the current methods have on layer-2 protocols.
 ### Pre-signed Transactions
 
 Often the transaction an honest party is racing against the clock to confirm is a *pre-signed* transaction.
-It was signed when their counterparty was cooperative -- now they need to go on chain precisely because they are not cooperative.
+It was signed when counterparty was cooperative -- now they need to go on chain precisely because they are not cooperative.
 If fees become persistently higher than the pre-signed transaction's fees the party may miss their deadline.
 The obvious but suboptimal solution is to monitor fees closely and update any time-sensitive pre-signed transactions with the counterparty while they are online (this method is available via the [`update_fee`] message in lightning today).
 
@@ -33,7 +33,7 @@ It is much more desirable to allow the party to spontaneously increase the fee a
 This can be done with [CPFP].
 For example, in the [Lightning] protocol commitment transactions have [anchor outputs] so they can be easily fee bumped through CPFP.
 Although this works it is rather complex to design and implement.
-Furthermore, users have to keep unattached fee-bumping UTXOs around in their wallet in case their need to do a fee-bump via CPFP.
+Furthermore, users have to keep unattached fee-bumping UTXOs around in their wallet in case they need to do a fee-bump via CPFP.
 
 ### Resource Usage of Replacement
 
