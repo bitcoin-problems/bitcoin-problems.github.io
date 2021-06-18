@@ -56,7 +56,7 @@ Then each encrypted payload for each node could contain a proof that it contains
    They focus on the collateral the attacker needs to commit to either block incoming or outgoing payments.
    They show that it is practical to enhance the naive attack by 3-10 times using cycles in the payment path against existing implementations.
    Their main recommendation is to deny cycles in the payment path.
-   It is not clear whether the strength of the attacks comes from using cycles between two nodes (which can easily be prevented with PTLCs) or cycles between 3 or more (which can't).
+   It is not clear whether the strength of the attacks comes from using cycles between two nodes (which can easily be prevented even with randomized PTLCs) or cycles between 3 or more (which can't).
 
 ## Related Problems
 
