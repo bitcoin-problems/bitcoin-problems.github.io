@@ -50,6 +50,10 @@ Cross-layer links are also building blocks to launch advanced attacks damaging u
 Instead of using layer-1 transactions to prevent spam, perhaps existing layer-2 funds could be used to prevent spam.
 For example if a small lightning payment had to be made to process channel update messages then this may pay for the resources used by peers on the network.
 
+### Use unrelated layer-1 funds to prevent spam
+
+A lightning node could vouch for their channels with non-lightning channel "reserve" coins.
+
 ### Use one-shot over Tor transaction (re)broadcast
 
 Instead of using the bitcoin node servicing the blockchain view, a Lightning node might use one-shot peer connection over Tor to break the linkage between IP address and transaction.
@@ -71,7 +75,7 @@ This technique should be particularly beneficial to Lightning hub with high-freq
 <!-- Also you or anyone else can add conjecture to this section (after review). -->
 <!-- In general, this is not a comments section (use the issue for that). -->
 
-*There has been no commentary on this problem so far*
+- [@rusty_twit](https://twitter.com/rusty_twit) made a [thread on twitter](https://twitter.com/rusty_twit/status/1449875010181484545) where he suggests the *Use unrelated layer-1 funds to prevent spam* idea.
 
 ## Related Problems
 
