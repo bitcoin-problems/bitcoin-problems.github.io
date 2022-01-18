@@ -117,4 +117,4 @@ An additional line of research here could be using zero-knowledge proofs for pri
 [Channel jamming attacks]: https://bitcoinops.org/en/topics/channel-jamming-attacks/
 [Preventing channel jamming]: https://blog.bitmex.com/preventing-channel-jamming/
 [Just-in-time (JIT) routing]: https://bitcoinops.org/en/topics/jit-routing/
-[Optimally reliable payment flows]: (https://arxiv.org/abs/2107.05322)
+[Optimally reliable payment flows]: https://arxiv.org/abs/2107.05322
