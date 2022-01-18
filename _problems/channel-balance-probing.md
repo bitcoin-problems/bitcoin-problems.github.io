@@ -92,11 +92,11 @@ An additional line of research here could be using zero-knowledge proofs for pri
 
 ## Related Research
 
-1. Herrera-Joancomartí et al. in [*On the difficulty of hiding the balance of Lightning network channels*] introduced the general idea of probing in the LN.
-2. Van Dam in [*Improvements of the balance discovery attack on Lightning network payment channels*] suggested probing channels from both ends, which reduces the capital requirement for the attack.
-3. Kappos et al in [*An empirical analysis of privacy in the Lightning network*] proposed controlling both the sender and the receiver of probes. This removes the dependency of the attack on error messages being propagated back to the sender: the attacker always knows whether the probe reached the final destination.
-4. Tikhomirov et al. in [*Probing channel balances in the Lightning network*] implemented multi-hop probing. Sending probes along multi-hop paths allows for a) accumulating balance information about multiple channels at once; b) avoiding on-chain fees for opening channels to target hops.
-5. Biryukov et al. in [*Analysis and Probing of Parallel Channels in the Lightning Network*] explored probing of parallel channels. If the target hop contains parallel channels, the prober, in the general ase, doesn't know which of them forwarded the probe. This obstacle may be solved with jamming-enhanced probing, i.e., probing parallel channels one by one while blocking the remaining ones.
+1. Herrera-Joancomartí et al. in *[On the difficulty of hiding the balance of Lightning network channels]* introduced the general idea of probing in the LN.
+2. Van Dam in *[Improvements of the balance discovery attack on Lightning network payment channels]* suggested probing channels from both ends, which reduces the capital requirement for the attack.
+3. Kappos et al in *[An empirical analysis of privacy in the Lightning network]* proposed controlling both the sender and the receiver of probes. This removes the dependency of the attack on error messages being propagated back to the sender: the attacker always knows whether the probe reached the final destination.
+4. Tikhomirov et al. in *[Probing channel balances in the Lightning network]* implemented multi-hop probing. Sending probes along multi-hop paths allows for a) accumulating balance information about multiple channels at once; b) avoiding on-chain fees for opening channels to target hops.
+5. Biryukov et al. in *[Analysis and Probing of Parallel Channels in the Lightning Network]* explored probing of parallel channels. If the target hop contains parallel channels, the prober, in the general ase, doesn't know which of them forwarded the probe. This obstacle may be solved with jamming-enhanced probing, i.e., probing parallel channels one by one while blocking the remaining ones.
 
 
 ## Commentary
