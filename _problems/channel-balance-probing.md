@@ -2,7 +2,7 @@
 layout: problem
 title:  "Channel balance probing"
 tags: lightning privacy
-status: "wip"
+status: "open"
 maintainer: s-tikhomirov
 issue: 24
 ---
