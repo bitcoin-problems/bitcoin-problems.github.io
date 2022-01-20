@@ -7,9 +7,7 @@ maintainer: s-tikhomirov
 issue: 24
 ---
 
-Balances of Lightning channels are not revealed during normal protocol operation. Hence LN users may have a somewhat grounded perception that their balances are private. Indeed, as LN payments are not publicly broadcast (contrary to L1 Bitcoin transactions), Lightning may be seen as not only scalability solution but also a privacy enhancing technology.
-
-In reality, however, channel balance privacy can be violated in the following scenario. The attacker sends a series of payments (probes) with randomly generated payment hashes. Each probe fails because of either insufficient balance at an intermediary hop, or because the final receiver doesn't know the respective preimage. By distinguishing between these two cases, the attacker performs binary search over all possible positions of the balance (between zero and channel capacity).
+Balances of Lightning channels are not revealed during normal protocol operation. Hence LN users may have a somewhat grounded perception that their balances are private. Indeed, as LN payments are not publicly broadcast (contrary to L1 Bitcoin transactions), Lightning may be seen as not only scalability solution but also a privacy enhancing technology. In reality, however, channel balance privacy can be violated in the following scenario. The attacker sends a series of payments (probes) with randomly generated payment hashes. Each probe fails because of either insufficient balance at an intermediary hop, or because the final receiver doesn't know the respective preimage. By distinguishing between these two cases, the attacker performs binary search over all possible positions of the balance (between zero and channel capacity).
 
 {% include figure.html image="probing-attack.svg" name="Channel balance probing attack" caption="The attacker makes a series of probes following the binary search pattern and improves their estimates (colored interval) of the position of the true balance (star) within the channel (outer interval)."
 %}
