@@ -127,4 +127,4 @@ An additional line of research here could be using zero-knowledge proofs for pri
 [An Empirical Analysis of Privacy in the Lightning Network]: https://arxiv.org/abs/2003.12470
 [Probing Channel Balances in the Lightning Network]: https://arxiv.org/abs/2004.00333
 [Analysis and Probing of Parallel Channels in the Lightning Network]: https://eprint.iacr.org/2021/384
-[Removing cross-layer links]: removing-cross-layer-links.md
+[Removing cross-layer links]: {% link _problems/removing-cross-layer-links.md %}
