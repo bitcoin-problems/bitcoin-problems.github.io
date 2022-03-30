@@ -71,12 +71,13 @@ Upfront fees may be refundable or non-refundable.
 Non-refundable upfront fees impose a cost on failed payment attempts.
 
 In the simplest **forward upfront fee** scheme, each node pays a fee to the next node to forward a payment.
-The fee amounts should increase along the route.
-Otherwise, the attacker who controls the sender and the receiver would pay zero fee.
+Fee amounts should decrease along the route to provide motivation for routing nodes.
+If fees are equal on all hops, the attacker who controls the sender and the receiver would pay zero fee.
 The drawback of forward upfront fees is that routing nodes are motivated to deliberately fail payments and keep the fee.
 
 In the **reverse upfront fee** scheme, nodes pay to the previous node (that is, for _receiving_ a forwarding request, instead of _sending_ it).
-Reverse upfront fee is zero during a grace period: no fees are paid if a payment resolves quickly.
+Fee amounts for reverse fees should increase along the route.
+The fee should be zero during a grace period: no fees are paid if a payment resolves quickly.
 Without a grace period, an uncontrolled jamming attack would force nodes to pay fees with no cost for the attacker.
 It is an open question how long the grace period should be and when exactly it should start.
 
