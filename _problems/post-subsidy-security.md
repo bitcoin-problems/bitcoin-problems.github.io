@@ -7,7 +7,11 @@ maintainer: VzxPLnHqr
 issue: 29
 ---
 
-As the block subsidy drops, the network security budget may be inadequate if a robust fee market fails to develop. Two forms of the problem are overall low fees, and adequate-but-bursty fees. In both cases the network may fail to garner enough work to properly secure itself. 
+As the block subsidy drops, the network security budget may be inadequate if a robust fee market fails to develop. Two forms of the problem are overall low fees, and adequate-but-bursty fees. In both cases the network may fail to garner enough work to properly secure itself.
+
+A goal of this research is to define one or more *soft forks* which either permanently
+solve or, at minimum, stave off the problem, without sacrificing current community values.
+This means, for example, a hard-fork which introduces inflation will not be considered here.
 
 ## Impact
 
@@ -32,24 +36,30 @@ a fix.
 
 ## Proposed Solutions
 
+### Defining the Security Budget
+
 Some possible (currently quite informal) definitions for security budget and associated solutions: 
 
 1. Sztorc claims this can be solved in [1] via merged-mining and proposes a per-block security budget 
    `SB` as `SB = P*Q` where `P` is the average transaction price paid in sats/vbyte, and `Q` is the 
    number of bytes sold, the block size, in bytes/block. 
    
-2. A different, but perhaps complementary, measure of network security would be to somehow spread
-   the "net" accumulated work down to the per-satoshi level in the UTXO set. With this definition, 
-   when a block is mined, the contributed work for that block (a simple function of the network difficulty) 
-   is attributed to all sats in the current utxo set with older sats getting more than younger sats, presumably on an exponential
-   scale to account for block reorg risk. When utxos are spent, their accumulated work is lost. The measure
-   of network security then in this model is the total work attributed to the _current_ utxo set. Among other
-   things we want this to be greater than zero.
+2. ...
    
  The above are just example definitions and informal possible directions. Yet, if there is to be a formally
  defined notion of a security budget for the network, then we also should be asking what the appropriate "target"
  for that budget is. We probably seek some goldilocks scenario here where the amount of security garnered by
  the network is "not too much," definitely "not too little," but "just right" (in expectation of course).
+
+### Other Ideas
+
+There are other ideas/directions which may be currently more intuitive, but less formal:
+
+1. Pay-it-forward-fees. A soft-fork which requires miners to pay-forward *at least
+   half* of the non-subsidy fees. These forwarded fees would be earned by future miners.
+   For example, the soft-fork could requie that miners include an output at a specific
+   index with a locking script of `<1 year> OP_CSV`. A more complex soft-fork could
+   make the duration a function of the the age of the soft-fork itself.
 
 
 ## Related Research
