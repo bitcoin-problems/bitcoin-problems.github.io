@@ -61,6 +61,14 @@ There are other ideas/directions which may be currently more intuitive, but less
    index with a locking script of `<1 year> OP_CSV`. A more complex soft-fork could
    make the duration a function of the the age of the soft-fork itself.
 
+2. Nothing is broken. Of course there is a reasonable chance that nothing is actually
+   broken and needs fixing here. For example, even in a post-subsidy world where
+   blocks are mostly empty, we can imagine layer-2,3,4... protocols requiring/utilizing
+   recent block headers within their own protocol. Using Lightning as a more concrete
+   example: if everybody is happy with their channels, there is plenty of liquidity,
+   closings are infrequent, etc, then we can easily imagine miners themselves earning
+   fees within channels.
+
 
 ## Related Research
 
