@@ -59,16 +59,16 @@ While the drawbacks of these naive proposals likely outweigh their benefits, the
 
 ### Parallel channels
 
-LN allows a pair of nodes to share multiple channels, which are called parallel. Payment forwarding in Lightning is _non-strict_: if Alice has multiple channel to Bob, she may choose any of them to forward a payment. This complicates probing: the attacker doesn't know which channel estimate to update.
+LN allows a pair of nodes to share multiple channels, which are called parallel channels. Payment forwarding in Lightning is _non-strict_: if Alice has multiple channels to Bob, she may choose any of them to forward a payment. This complicates probing: the attacker doesn't know which channel estimate to update.
 
-Parallel channels may be used as an anti-probing countermeasure. Two modes may advertise just one channel but maintain multiple unannounced ("private") channels that actually do the forwarding. The balance of the public channel is thus kept secret. More advanced parallel channel configurations may be possible.
+Parallel channels may be used as an anti-probing countermeasure. Two nodes may advertise just one channel but maintain multiple unannounced ("private") channels that actually do the forwarding. The balance of the public channel is thus kept secret. More advanced parallel channel configurations may be possible.
 
 A pair of nodes sharing multiple channels may also split a payment in multiple parts within their hop (intra-hop split; this hasn't been implemented).
 
 
 ### Rebalancing and JIT-routing
 
-Channel rebalancing means sending (potentially circular) payments to shift the distribution of funds in one's channels. In [Just-in-time (JIT) routing], nodes do rebalancing during payment forwarding (hence, just-in-time), as opposed to doing it preemptively. If asked to forward a payment that larger than any single channel balance, a JIT-routing node concentrates enough funds in one of its channels and then continues forwarding. From the prober's standpoint, rebalancing changes the properties of a hop while probing is happening, hence the attacker's prior estimates get invalidated. However, the attacker may still reveal the sum of the hop's balances. (What exactly can be revealed in this case depends on which channel directions are enabled - see Section 5.4 in *[Analysis and Probing of Parallel Channels in the Lightning Network]*.)
+Channel rebalancing means sending (potentially circular) payments to shift the distribution of funds in one's channels. In [Just-in-time (JIT) routing], nodes do rebalancing during payment forwarding (hence, just-in-time), as opposed to doing it preemptively. If asked to forward a payment that is larger than any single channel balance, a JIT-routing node concentrates enough funds in one of its channels and then continues forwarding. From the prober's standpoint, rebalancing changes the properties of a hop while probing is happening, hence the attacker's prior estimates get invalidated. However, the attacker may still reveal the sum of the hop's balances. (What exactly can be revealed in this case depends on which channel directions are enabled - see Section 5.4 in *[Analysis and Probing of Parallel Channels in the Lightning Network]*.)
 
 In general, probing assumes that the balance of the victim channel doesn't change while the attack is happening. In realistic scenarios, one probe takes a few seconds. Probing a 1-million satoshi channel with 1-thousand satoshi precision (10 binary search steps, i.e. probes) shouldn't take more than a minute. Rebalancing or other techniques that temporarily shift channel balances at least once a minute could therefore be considered a countermeasure against probing.
 
